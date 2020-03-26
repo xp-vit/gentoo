@@ -25,4 +25,4 @@ jobs:
     - name: Lint with flake8
       run: |
         echo "test"
-        ebuildterster --version
+        ebuildtester --version
