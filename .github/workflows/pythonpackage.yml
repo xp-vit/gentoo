@@ -22,7 +22,8 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install ebuildtester
-    - name: Lint with flake8
+    - name: Test package with ebuildtester
       run: |
         echo "test"
         ebuildtester --version
+        ebuildtester --portage-dir . --atom dev-python/ebuildtester-0.1.16 --profile "default/linux/amd64/17.1" --unstable --rm
