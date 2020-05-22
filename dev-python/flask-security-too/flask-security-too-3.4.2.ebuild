@@ -17,28 +17,34 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-python/flask-1.1.1[${PYTHON_USEDEP}]
 	>=dev-python/flask-login-0.4.1[${PYTHON_USEDEP}]
 	>=dev-python/flask-principal-0.4.0[${PYTHON_USEDEP}]
 	>=dev-python/flask-wtf-0.14.2[${PYTHON_USEDEP}]
 	>=dev-python/flask-babelex-0.9.3[${PYTHON_USEDEP}]
-	>=dev-python/email-validator-1.0.5[${PYTHON_USEDEP}]
+	>=dev-python/python-email-validator-1.0.5[${PYTHON_USEDEP}]
 	>=dev-python/itsdangerous-1.1.0[${PYTHON_USEDEP}]
 	>=dev-python/passlib-1.7.2[${PYTHON_USEDEP}]
 "
 
-DEPEND="${RDEPEND}
-	dev-python/pytest-runner[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
+BDEPEND="${RDEPEND}
+	dev-python/wheel[${PYTHON_USEDEP}]
+	dev-python/twine[${PYTHON_USEDEP}]
+	>=dev-python/Babel-1.3[${PYTHON_USEDEP}]
 	test? (
+		>=dev-python/pytest-runner-5.2[${PYTHON_USEDEP}]
 		>=dev-python/flask-mail-0.9.1[${PYTHON_USEDEP}]
+		>=dev-python/flask-mongoengine-0.9.5[${PYTHON_USEDEP}]
+		>=dev-python/peewee-3.11.2[${PYTHON_USEDEP}]
+		>=dev-python/argon2_cffi-19.1.0[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/flask-sqlalchemy[${PYTHON_USEDEP}]
-		dev-python/flask-mongoengine[${PYTHON_USEDEP}]
+		>=dev-python/flask-sqlalchemy-2.3[${PYTHON_USEDEP}]
 		dev-python/bcrypt[${PYTHON_USEDEP}]
 		dev-python/simplejson[${PYTHON_USEDEP}]
 	)"
+
 distutils_enable_tests pytest
 distutils_enable_sphinx docs
 
